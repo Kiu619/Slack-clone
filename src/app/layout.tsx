@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   description: 'Slack clone',
 }
 
+// This is a revalidation time of 0 seconds, meaning the page will not be cached and will always be fresh.
 export const revalidate = 0
 
 export default function RootLayout({
@@ -22,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' suppressHydrationWarning>
       <body className={lato.className}>
         <main>{children}</main>
         <Toaster />
