@@ -8,7 +8,7 @@ import { toast } from 'sonner'
 import ImageUpload from '@/components/image-upload'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import Typography from '@/components/typography'
+import Typography from '@/components/ui/typography'
 
 import { useCreateWorkspaceValues } from '@/hooks/create-workspace-values'
 import { createWorkspace } from '@/actions/create-workspace'

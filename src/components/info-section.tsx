@@ -1,61 +1,64 @@
-'use client';
+'use client'
 
-import { FC, useState } from 'react';
-import { FaArrowDown, FaArrowUp, FaPlus } from 'react-icons/fa6';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { FaArrowDown, FaArrowUp, FaPlus } from 'react-icons/fa6'
 
-import { cn } from '@/lib/utils';
-import { useColorPrefrences } from '@/providers/color-prefrences';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from '@/components/ui/collapsible';
-import Typography from '@/components/typography';
-import CreateChannelDialog from '@/components/create-channel-dialog';
-import { Channel, User, Workspace } from '@/types/app';
+} from '@/components/ui/collapsible'
+import Typography from '@/components/ui/typography'
+import { cn } from '@/lib/utils'
+import { useColorPrefrences } from '@/providers/color-prefrences'
+// import CreateChannelDialog from '@/components/create-channel-dialog'
+import { Channel, User, Workspace } from '@/types/app'
+import CreateChannelDialog from './create-channel-dialog'
 
-const InfoSection: FC<{
-  userData: User;
-  currentWorkspaceData: Workspace;
-  userWorkspaceChannels: Channel[];
-  currentChannelId: string | undefined;
-}> = ({
+type InfoSectionProps = {
+  userData: User
+  currentWorkspaceData: Workspace
+  userWorkspaceChannels: Channel[]
+  currentChannelId: string  
+}
+
+const InfoSection = ({
   userData,
   currentWorkspaceData,
   userWorkspaceChannels,
   currentChannelId,
-}) => {
-  const { color } = useColorPrefrences();
-  const [isChannelCollapsed, setIsChannelCollapsed] = useState(true);
+}: InfoSectionProps) => {
+  const { color } = useColorPrefrences()
+  const [isChannelCollapsed, setIsChannelCollapsed] = useState(true)
   const [isDirectMessageCollapsed, setIsDirectMessageCollapsed] =
-    useState(true);
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const router = useRouter();
+    useState(true)
+  const [dialogOpen, setDialogOpen] = useState(false)
+  const router = useRouter()
 
-  let backgroundColor = 'bg-primary-light';
+  let backgroundColor = 'bg-primary-light'
   if (color === 'green') {
-    backgroundColor = 'bg-green-900';
+    backgroundColor = 'bg-green-900'
   } else if (color === 'blue') {
-    backgroundColor = 'bg-blue-900';
+    backgroundColor = 'bg-blue-900'
   }
 
-  let secondayBg = 'bg-primary-dark';
+  let secondayBg = 'bg-primary-dark'
   if (color === 'green') {
-    secondayBg = 'bg-green-700';
+    secondayBg = 'bg-green-700'
   } else if (color === 'blue') {
-    secondayBg = 'bg-blue-700';
+    secondayBg = 'bg-blue-700'
   }
 
   const navigateToChannel = (channelId: string) => {
-    const url = `/workspace/${currentWorkspaceData.id}/channels/${channelId}`;
-    router.push(url);
-  };
+    const url = `/workspace/${currentWorkspaceData.id}/channels/${channelId}`
+    router.push(url)
+  }
 
   const navigateToDirectMessage = (memberId: string) => {
-    const url = `/workspace/${currentWorkspaceData.id}/direct-message/${memberId}`;
-    router.push(url);
-  };
+    const url = `/workspace/${currentWorkspaceData.id}/direct-message/${memberId}`
+    router.push(url)
+  }
 
   return (
     <div
@@ -87,7 +90,7 @@ const InfoSection: FC<{
             </div>
             <CollapsibleContent>
               {userWorkspaceChannels.map(channel => {
-                const activeChannel = currentChannelId === channel.id;
+                const activeChannel = currentChannelId === channel.id
                 return (
                   <Typography
                     key={channel.id}
@@ -100,7 +103,7 @@ const InfoSection: FC<{
                     )}
                     onClick={() => navigateToChannel(channel.id)}
                   />
-                );
+                )
               })}
             </CollapsibleContent>
           </Collapsible>
@@ -158,7 +161,7 @@ const InfoSection: FC<{
         userId={userData.id}
       />
     </div>
-  );
-};
+  )
+}
 
-export default InfoSection;
+export default InfoSection

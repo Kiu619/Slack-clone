@@ -7,7 +7,7 @@ import { GoDot, GoDotFill } from 'react-icons/go'
 import { IoDiamondOutline } from 'react-icons/io5'
 
 import SidebarNav from '@/components/sidebar-nav'
-import Typography from '@/components/typography'
+import Typography from '@/components/ui/typography'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   Popover,

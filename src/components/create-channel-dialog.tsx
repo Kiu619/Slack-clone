@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog'
-import Typography from '@/components/typography'
+import Typography from '@/components/ui/typography'
 import {
   Form,
   FormControl,
@@ -25,12 +25,15 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { createChannel } from '@/actions/channels'
 
-const CreateChannelDialog: FC<{
+type Props = {
   dialogOpen: boolean
   setDialogOpen: Dispatch<SetStateAction<boolean>>
   workspaceId: string
-  userId: string
-}> = ({ dialogOpen, setDialogOpen, userId, workspaceId }) => {
+  userId: string  
+}
+
+const CreateChannelDialog = ({ dialogOpen, setDialogOpen, userId, workspaceId
+}: Props) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
 
@@ -63,6 +66,8 @@ const CreateChannelDialog: FC<{
       form.reset()
       toast.success('Channel created successfully')
     } catch (error) {
+      console.error('Error creating channel:', error)
+      toast.error('Failed to create channel. Please try again.')
       setIsSubmitting(false)
     }
   }

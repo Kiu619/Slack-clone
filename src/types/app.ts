@@ -17,9 +17,19 @@ export type Workspace = {
   id: string
   image_url: string | null
   invite_code: string | null
-  members: string[] | null
+  members: User[] | null
   name: string
   regulators: string[] | null
   slug: string
   super_admin: string
+}
+
+export type Channel = {
+  id: string
+  members: string[] | null
+  name: string
+  regulators: string[] | null
+  user_id: string
+  workspace_id: string
+  created_at: string
 }

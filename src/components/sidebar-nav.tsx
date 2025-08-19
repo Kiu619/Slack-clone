@@ -3,7 +3,7 @@ import { PiChatsTeardrop } from 'react-icons/pi'
 import { RiHome2Fill } from 'react-icons/ri'
 
 import CreateWorkspace from '@/components/create-workspace'
-import Typography from '@/components/typography'
+import Typography from '@/components/ui/typography'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent } from '@/components/ui/card'
 import {

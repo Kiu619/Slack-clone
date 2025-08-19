@@ -4,6 +4,9 @@ import Sidebar from '@/components/sidebar'
 import { redirect } from 'next/navigation'
 
 import { Workspace as UserWorkspace } from '@/types/app'
+import InfoSection from '@/components/info-section'
+import { getUserWorkspaceChannels } from '@/actions/get-user-workspace-channels'
+import NoDataScreen from '@/components/no-data-screen'
 
 interface WorkspacePageProps {
   params: Promise<{ workspaceId: string }>
@@ -14,14 +17,14 @@ export default async function WorkspacePage({ params }: WorkspacePageProps) {
   const userData = await getUserData()
   if (!userData) return redirect('/auth')
 
-  const [userWorkspaceData] = await getUserWorkspaceData(userData.workspaces!);
+  const [userWorkspaceData] = await getUserWorkspaceData(userData.workspaces!)
 
-  const [currentWorkspaceData] = await getCurrentWorksaceData(workspaceId);
+  const [currentWorkspaceData] = await getCurrentWorksaceData(workspaceId)
 
-  // const userWorkspaceChannels = await getUserWorkspaceChannels(
-  //   currentWorkspaceData.id,
-  //   userData.id
-  // );
+  const userWorkspaceChannels = await getUserWorkspaceChannels(
+    currentWorkspaceData.id,
+    userData.id
+  )
 
 
   return (
@@ -32,7 +35,7 @@ export default async function WorkspacePage({ params }: WorkspacePageProps) {
           userData={userData}
           userWorksapcesData={userWorkspaceData as UserWorkspace[]}
         />
-        {/* <InfoSection
+        <InfoSection
           currentWorkspaceData={currentWorkspaceData}
           userData={userData}
           userWorkspaceChannels={userWorkspaceChannels}
@@ -43,7 +46,7 @@ export default async function WorkspacePage({ params }: WorkspacePageProps) {
           userId={userData.id}
           workspaceId={currentWorkspaceData.id}
           workspaceName={currentWorkspaceData.name}
-        /> */}
+        />
       </div>
       <div className='md:hidden block min-h-screen'>Mobile</div>
     </>

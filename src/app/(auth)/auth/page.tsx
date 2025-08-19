@@ -8,7 +8,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { RxGithubLogo } from 'react-icons/rx'
 import { z } from 'zod'
 
-import Typography from '@/components/typography'
+import Typography from '@/components/ui/typography'
 import { Button } from '@/components/ui/button'
 import {
   Form,

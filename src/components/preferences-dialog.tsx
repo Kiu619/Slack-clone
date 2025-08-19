@@ -5,7 +5,7 @@ import { HiOutlinePaintBrush } from 'react-icons/hi2'
 
 import { useColorPrefrences } from '@/providers/color-prefrences'
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from './ui/dialog'
-import Typography from './typography'
+import Typography from './ui/typography'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 import { Button } from './ui/button'
 import { cn } from '@/lib/utils'
