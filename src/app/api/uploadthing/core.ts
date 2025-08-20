@@ -11,10 +11,10 @@ const currUser = async () => {
 
 export const ourFileRouter = {
   workspaceImage: f({
-    image: { maxFileSize: '4MB', maxFileCount: 1 },
+    image: { maxFileSize: '4MB', maxFileCount: 1 }
   })
     .middleware(() => currUser())
-    .onUploadComplete(() => {}),
+    .onUploadComplete(() => {})
 } satisfies FileRouter
 
 export type OurFileRouter = typeof ourFileRouter

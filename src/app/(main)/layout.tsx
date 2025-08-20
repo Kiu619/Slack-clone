@@ -1,9 +1,11 @@
 import MainContent from '@/components/main-content'
 import { ColorPrefrencesProvider } from '@/providers/color-prefrences'
 import { ThemeProvider } from '@/providers/theme-provider'
+import { WebSocketProvider } from '@/providers/web-socket'
+import { QueryProvider } from '@/providers/query-prodiver'
 
 export default function MainLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
@@ -14,9 +16,13 @@ export default function MainLayout({
       enableSystem
       disableTransitionOnChange
     >
-      <ColorPrefrencesProvider>
-        <MainContent>{children}</MainContent>
-      </ColorPrefrencesProvider>
+      <WebSocketProvider>
+        <ColorPrefrencesProvider>
+          <MainContent>
+            <QueryProvider>{children}</QueryProvider>
+          </MainContent>
+        </ColorPrefrencesProvider>
+      </WebSocketProvider>
     </ThemeProvider>
   )
 }

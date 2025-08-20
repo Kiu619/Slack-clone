@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@plugin '@tailwindcss/typography';
 
 @import "uploadthing/tw/v4";
 @source "../node_modules/@uploadthing/react/dist";
@@ -124,4 +125,16 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+tiptap.ProseMirror {
+  outline: none;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
 }
