@@ -7,7 +7,7 @@ import { FaArrowDown, FaArrowUp, FaPlus } from 'react-icons/fa6'
 import {
   Collapsible,
   CollapsibleContent,
-  CollapsibleTrigger,
+  CollapsibleTrigger
 } from '@/components/ui/collapsible'
 import Typography from '@/components/ui/typography'
 import { cn } from '@/lib/utils'
@@ -23,11 +23,12 @@ type InfoSectionProps = {
   currentChannelId: string | undefined
 }
 
+
 const InfoSection = ({
   userData,
   currentWorkspaceData,
   userWorkspaceChannels,
-  currentChannelId,
+  currentChannelId
 }: InfoSectionProps) => {
   const { color } = useColorPrefrences()
   const [isChannelCollapsed, setIsChannelCollapsed] = useState(true)
@@ -140,14 +141,14 @@ const InfoSection = ({
                   <Typography
                     key={member.id}
                     variant='p'
-                    text={member.name || member.email}
+                    text={member.name!}
                     className={cn(
-                      'px-2 py-1 rounded-sm cursor-pointer',
+                      'px-2 py-1 rounded-sm cursor-pointer text-white mt-2',
                       `hover:${secondayBg}`
                     )}
                     onClick={() => navigateToDirectMessage(member.id)}
                   />
-                );
+                )
               })}
             </CollapsibleContent>
           </Collapsible>

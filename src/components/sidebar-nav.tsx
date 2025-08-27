@@ -126,9 +126,10 @@ const SidebarNav= ({
                                   className='text-xs lg:text-xs'
                                 />
                                 <Copy
-                                  onClick={() =>
+                                  onClick={(e: React.MouseEvent<SVGSVGElement>) => {
+                                    e.stopPropagation()
                                     copyInviteLink(workspace.invite_code!)
-                                  }
+                                  }}
                                   size={18}
                                 />
                               </div>

@@ -51,7 +51,6 @@ export const getCurrentWorksaceData = async (workspaceId: string) => {
       return userData
     })
   )
-
   data.members = memberDetails.filter(member => member !== null)
 
   return [data, error]

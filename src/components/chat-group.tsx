@@ -51,7 +51,7 @@ const ChatGroup= ({
   useEffect(() => {
     const callParam = searchParams?.get('call')
     setIsVideoCall(callParam === 'true')
-  }, [searchParams, chatId])
+  }, [searchParams, chatId]) 
 
   return (
     <>

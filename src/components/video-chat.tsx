@@ -10,9 +10,9 @@ import { User } from '@/types/app'
 import DotAnimatedLoader from './dot-animated-loader'
 
 type VideoChatProps = {
-  chatId: string
-  userData: User
-}
+  chatId: string;
+  userData: User;
+};
 
 const VideoChat: FC<VideoChatProps> = ({ chatId, userData }) => {
   const [token, setToken] = useState<string>('')

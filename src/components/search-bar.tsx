@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation'
 import { Search } from 'lucide-react'
 import {
   MdOutlineAdminPanelSettings,
-  MdOutlineAssistantPhoto,
+  MdOutlineAssistantPhoto
 } from 'react-icons/md'
 import { toast } from 'sonner'
 
@@ -15,13 +15,13 @@ import { cn } from '@/lib/utils'
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/components/ui/popover'
 import { Button } from './ui/button'
 import {
   addChannelToUser,
   updateChannelMembers,
-  updateChannelRegulators,
+  updateChannelRegulators
 } from '@/actions/channels'
 
 type SearchBarProps = {
@@ -33,7 +33,7 @@ type SearchBarProps = {
 const SearchBar = ({
   currentWorkspaceData,
   loggedInUserId,
-  currentChannelData,
+  currentChannelData
 }: SearchBarProps) => {
   const { color } = useColorPrefrences()
   const router = useRouter()
@@ -74,6 +74,8 @@ const SearchBar = ({
     toast.success('User is now a regulator')
   }
 
+  console.log('currentWorkspaceData', currentWorkspaceData)
+
   return (
     <div
       className={cn(
@@ -97,7 +99,7 @@ const SearchBar = ({
                   className='flex items-center my-2 justify-between'
                 >
                   <div className='flex items-center p-2'>
-                    <span className='mr-2 text-sm text-black dark:text-white'>
+                    <span className='mr-2 text-sm text-red-500 dark:text-white'>
                       {member?.name ?? member?.email}
                     </span>
                     {isRegulator(member.id) && (
@@ -112,20 +114,20 @@ const SearchBar = ({
                     {loggedInUserId !== member.id &&
                       !isRegulator(member.id) &&
                       isChannelMember(member.id) && (
-                        <Button
-                          className='text-[10px]'
-                          size='sm'
-                          variant='destructive'
-                          onClick={() =>
-                            makeUserRegulator(
-                              member.id,
+                      <Button
+                        className='text-[10px]'
+                        size='sm'
+                        variant='destructive'
+                        onClick={() =>
+                          makeUserRegulator(
+                            member.id,
                               currentChannelData?.id!
-                            )
-                          }
-                        >
+                          )
+                        }
+                      >
                           Assign Regulator
-                        </Button>
-                      )}
+                      </Button>
+                    )}
 
                     {!isChannelMember(member.id) && (
                       <Button

@@ -12,13 +12,13 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
   Popover,
   PopoverContent,
-  PopoverTrigger,
+  PopoverTrigger
 } from '@/components/ui/popover'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 import { useColorPrefrences } from '@/providers/color-prefrences'
@@ -36,7 +36,7 @@ type SidebarProps = {
 const Sidebar = ({
   userWorksapcesData,
   currentWorkspaceData,
-  userData,
+  userData
 }: SidebarProps) => {
   const { color } = useColorPrefrences()
 
@@ -114,9 +114,9 @@ const Sidebar = ({
                       <div className='flex space-x-3'>
                         <Avatar>
                           <AvatarImage src={userData.avatar_url} />
-                          {/* <AvatarFallback>
+                          <AvatarFallback>
                             {userData.name && userData.name.slice(0, 2)}
-                          </AvatarFallback> */}
+                          </AvatarFallback>
                         </Avatar>
                         <div className='flex flex-col'>
                           <Typography
